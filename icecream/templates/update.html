@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<h1 class="text-center">Update Product</h1>
+<form action="{% url 'product_edit' ice.id %}" method="post">
+    {% csrf_token %}
+    <div class="form-group mb-2">
+        <label>Name</label><br/>
+       <input type="text" class="form-control" id="icecream_name" name="name" value="{{ icecream.name }}">
+    </div>
+    <div class="form-group mb-2">
+        <br/><label>Price</label>
+        <br/><input type="product_price" class="form-control" id="icecream_price" name="price" value="{{ icecream.price }}">        
+    </div>
+    <br/>
+    <br/>         
+    <button type="submit" class="btn btn-primary">Update Product</button>
+</form>
+{% endblock %}

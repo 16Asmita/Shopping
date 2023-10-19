@@ -1,0 +1,35 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<style>
+    th, td {
+      border: 2px solid black;
+      padding: 5px 30px;
+      text-align: center;
+
+    }
+    
+    </style>
+    <div class="title">
+        <h3> Contact Details </h3>
+
+    </div>
+<table class="table table-striped mt-3 center">    
+    <tr>
+        <th>id</th>
+        <th>Name</th>
+        <th>Mobil</th>
+    </tr>
+    {% for contact in contacts %}
+    <tr>
+        <td>{{ contact.id }}</td>
+        <td><a href="/contact/ {{ contact.id }}">{{ contact.name }}</a></td>
+        <td>{{ contact.mobil }}</td>
+
+    </tr>
+    {% endfor %}
+</table>
+
+
+{% endblock %}

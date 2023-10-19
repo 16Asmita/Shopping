@@ -1,0 +1,67 @@
+{% extends 'index.html' %}
+{% block content %}
+<style>
+    th, td {
+      border: 2px solid black;
+      padding: 10px 50px;
+      text-align: center;
+
+    }
+    .hero{
+        display: flex;
+        flex-direction: column;
+    }
+    .title h4{
+        font-size: 25px;
+    }
+    </style>
+
+{% if messages %}
+<div class="messages mt-2 text-center">
+{% for message in messages %}
+    <div class="alert alert-success alert-dismissible fade show" >
+        {{ message }}
+    </div>
+{% endfor %}
+</div>
+{% endif %}
+
+
+<div class="title">
+    <h4>Icecream Flavors </h4>
+</div>
+
+<table class="table table-striped mt-3 center ">   
+    
+
+    <tr>
+        <th>id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Delete</th>
+        <th>Update</th>
+
+    </tr>
+    {% for ice in icecreams %}
+
+    <tr>
+        <td><a href="/icecream/{{ ice.id }}">{{ ice.id }}</a></td>
+        <td><a href="/icecream/{{ ice.id }}">{{ ice.name }}</a></td>
+
+        <td>{{ ice.price }}</td>
+
+        <td>
+           <a href="{% url 'remove' ice.id %}" button class="btn btn-danger">Delete</button></a>
+        </td>
+        <td>
+           <a href="{% url 'product_update' ice.id%}"> <button class="btn-danger"> Update</button></a>
+        </td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+        <a href="{% url 'product_create' %}" ><button class="btn btn-primary">Insert</a>
+
+
+{% endblock %}
